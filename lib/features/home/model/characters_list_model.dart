@@ -2,7 +2,7 @@ import 'character_model.dart';
 import 'sub_models.dart';
 
 class CharactersList {
-  List<Character> characters;
+  List<CharacterModel> characters;
   Meta meta;
   Links links;
 
@@ -13,7 +13,7 @@ class CharactersList {
   });
 
   factory CharactersList.fromJson(Map<String, dynamic> json) => CharactersList(
-        characters: List<Character>.from(json["items"].map((x) => Character.fromJson(x))),
+        characters: List<CharacterModel>.from(json["items"].map((x) => CharacterModel.fromJson(x))),
         meta: Meta.fromJson(json["meta"]),
         links: Links.fromJson(json["links"]),
       );

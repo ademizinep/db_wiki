@@ -1,4 +1,4 @@
-class Character {
+class CharacterModel {
   int id;
   String name;
   String ki;
@@ -10,7 +10,7 @@ class Character {
   String affiliation;
   String? deletedAt;
 
-  Character({
+  CharacterModel({
     required this.id,
     required this.name,
     required this.ki,
@@ -23,7 +23,7 @@ class Character {
     required this.deletedAt,
   });
 
-  factory Character.fromJson(Map<String, dynamic> json) => Character(
+  factory CharacterModel.fromJson(Map<String, dynamic> json) => CharacterModel(
         id: json["id"],
         name: json["name"],
         ki: json["ki"],
