@@ -52,45 +52,79 @@ class _HomePageState extends State<HomePage> {
         builder: (context, snapshot) {
           final List<Character> data = snapshot.data?.characters ?? [];
 
-          return Container(
-            height: 200,
-            color: Colors.red,
-            width: double.infinity,
-            child: ListView.separated(
-              separatorBuilder: (context, index) => const SizedBox(width: 10),
-              itemBuilder: (context, index) {
-                final color = colors[index % colors.length];
+          return Visibility(
+            visible: data.isNotEmpty,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 200,
+                  width: double.infinity,
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    separatorBuilder: (context, index) => const SizedBox(width: 10),
+                    itemBuilder: (context, index) {
+                      final color = colors[index % colors.length];
 
-                return Stack(
-                  children: [
-                    Container(
-                      width: 110,
-                      height: 145,
-                      decoration: BoxDecoration(
-                        color: color,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(data[index].name,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                    Positioned(
-                      top: 40,
-                      left: 10,
-                      child: Image.network(
-                        data[index].image,
-                        width: 140,
-                        height: 140,
-                      ),
-                    ),
-                  ],
-                );
-              },
-              itemCount: data.length,
-              scrollDirection: Axis.horizontal,
+                      return Stack(
+                        children: [
+                          Container(
+                            width: 110,
+                            height: 145,
+                            decoration: BoxDecoration(
+                              color: color,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text(data[index].name,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          ),
+                          Positioned(
+                            top: 40,
+                            left: 10,
+                            child: Image.network(
+                              data[index].image,
+                              width: 140,
+                              height: 140,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                    itemCount: 10,
+                    scrollDirection: Axis.horizontal,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Expanded(
+                  child: ListView.separated(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                data[index].name,
+                                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                              Text("Ki: ${data[index].ki}"),
+                              Text("Raça: ${data[index].race}"),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    itemCount: data.length,
+                    separatorBuilder: (context, index) => const SizedBox(height: 10),
+                  ),
+                ),
+              ],
             ),
           );
         },
