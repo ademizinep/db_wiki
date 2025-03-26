@@ -5,9 +5,7 @@ import '../model/character_model.dart';
 import '../model/characters_list_model.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
-
-  final String title;
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -45,7 +43,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: const Text("Dragon Ball"),
       ),
       body: FutureBuilder(
         future: characters,
@@ -57,7 +55,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 200,
+                  height: 180,
                   width: double.infinity,
                   child: ListView.separated(
                     shrinkWrap: true,
@@ -70,16 +68,23 @@ class _HomePageState extends State<HomePage> {
                           Container(
                             width: 110,
                             height: 145,
+                            padding: const EdgeInsets.symmetric(vertical: 10),
                             decoration: BoxDecoration(
                               color: color,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Text(data[index].name,
+                            child: RotatedBox(
+                              quarterTurns: 3,
+                              child: Text(
+                                data[index].name,
+                                textDirection: TextDirection.rtl,
                                 style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
-                                )),
+                                ),
+                              ),
+                            ),
                           ),
                           Positioned(
                             top: 40,
