@@ -45,7 +45,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
                   style: GoogleFonts.knewave(
                     textStyle: const TextStyle(
                       color: Colors.black,
-                      fontSize: 24,
+                      fontSize: 36,
                       // fontWeight: FontWeight.bold,
                     ),
                   ),
