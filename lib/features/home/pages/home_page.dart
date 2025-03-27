@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../constants.dart';
 import '../../../datasources/remote_datasource.dart';
 import '../../../widgets/character_card.dart';
 import '../../../widgets/character_item.dart';
@@ -27,15 +28,27 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  // Explicar estrutura scaffold
+  // Ir para widget de card - fornecer imagem
+  // FutureBuilder consumir API
+  // Visibility
+  // AppBar com package GoogleFonts
+  // ListView
+  // Navegacao para Details
+  // Mostra Hero
+  // GridView
+  // ...
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE98E03),
+      backgroundColor: kOrangeColor,
       appBar: const CustomAppBar(),
       body: FutureBuilder(
         future: characters,
         builder: (context, snapshot) {
           final List<CharacterModel> data = snapshot.data?.characters ?? [];
+
           final mainCharacter = data.take(6).toList();
           final otherCharacter = data.skip(6).toList();
 
@@ -65,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                           child: Text(
                             '${otherCharacter.length.toString()} personagens',
-                            style: GoogleFonts.roboto(textStyle: const TextStyle(color: Color(0xFF864300), fontSize: 12)),
+                            style: GoogleFonts.roboto(textStyle: const TextStyle(color: kBrownColor, fontSize: 12)),
                           ),
                         ),
                         ListView.separated(
@@ -96,8 +109,8 @@ class _HomePageState extends State<HomePage> {
       child: SizedBox(
         width: 200,
         child: LinearProgressIndicator(
-          color: Color(0xFF864300),
-          backgroundColor: Color(0xFFFFC386),
+          color: kBrownColor,
+          backgroundColor: kLightBrownColor,
         ),
       ),
     );

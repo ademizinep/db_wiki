@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../constants.dart';
 import '../../../datasources/remote_datasource.dart';
 import '../model/character_model.dart';
 import '../model/characters_list_model.dart';
@@ -31,7 +32,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      backgroundColor: const Color(0xFFE98E03),
+      backgroundColor: kOrangeColor,
       body: ListView(
         children: [
           _buildCharacter(),
@@ -44,7 +45,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
                   widget.character.name.toUpperCase(),
                   style: GoogleFonts.knewave(
                     textStyle: const TextStyle(
-                      color: Colors.black,
+                      color: kBlackColor,
                       fontSize: 36,
                       // fontWeight: FontWeight.bold,
                     ),
@@ -88,9 +89,9 @@ class _CharacterDetailsState extends State<CharacterDetails> {
   Widget _buildGridItems(String title, String value) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFFD36B03),
+        color: kDarkOrangeColor,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.black),
+        border: Border.all(color: kBlackColor),
       ),
       padding: const EdgeInsets.all(12),
       child: Column(
@@ -101,7 +102,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
             title,
             style: GoogleFonts.roboto(
               textStyle: const TextStyle(
-                color: Color(0xFF864300),
+                color: kBrownColor,
                 fontSize: 12,
               ),
             ),
@@ -111,7 +112,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
             child: Text(
               value,
               style: GoogleFonts.knewave(
-                textStyle: const TextStyle(color: Colors.black, fontSize: 16),
+                textStyle: const TextStyle(color: kBlackColor, fontSize: 16),
               ),
             ),
           ),
