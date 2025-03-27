@@ -80,7 +80,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      backgroundColor: const Color(0xFFFFCA07),
+      backgroundColor: kYellowColor,
       elevation: 0,
       scrolledUnderElevation: 0,
     );
